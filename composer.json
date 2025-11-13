@@ -3,18 +3,18 @@
     "description": "Basic REST Client for Calix AXOS SMx Northbound server",
     "require": {
         "php": ">=8.3",
-        "ocolin/easy-swagger": "^2.0",
-        "ocolin/easyenv": "^1.2"
+        "ocolin/easyenv": "^2.4",
+        "guzzlehttp/guzzle": "^7.10"
     },
     "require-dev": {
         "phpstan/phpstan": "^2.1",
-        "phpunit/phpunit": "^12.1"
+        "phpunit/phpunit": "^12.4"
     },
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Ocolin\\CalixAxosClient\\": "src/",
-            "Ocolin\\CalixAxosClient\\Tests\\": "tests/"
+            "Ocolin\\Calix\\Axos\\": "src/",
+            "Ocolin\\Calix\\Axos\\Tests\\": "tests/"
         }
     },
     "authors": [
