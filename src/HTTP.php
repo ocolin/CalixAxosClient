@@ -32,7 +32,7 @@ class HTTP
     public readonly string $password;
 
     /**
-     * @var string[]|object|null End point URI query parameters.
+     * @var array<string, string|int|float>|object|null End point URI query parameters.
      */
     public array|object|null $query = null;
 
@@ -86,8 +86,8 @@ class HTTP
 
     /**
      * @param string $path API end point path.
-     * @param string[]|object|null $query Path and Query URI parameters.
-     * @param string[]|object|null $body Body parameters for PUT/POST.
+     * @param array<string, string|int|float>|object|null $query Path and Query URI parameters.
+     * @param array<string, mixed>|object|null $body Body parameters for PUT/POST.
      * @return ResponseInterface Guzzle response object.
      * @throws GuzzleException
      */
@@ -115,7 +115,7 @@ class HTTP
 
     /**
      * @param string $path APi end point path.
-     * @param string[]|object|null $query Path and Query URI parameters.
+     * @param array<string, string|int|float>|object|null $query Path and Query URI parameters.
      * @return ResponseInterface Guzzle response object.
      * @throws GuzzleException
      */
@@ -139,7 +139,7 @@ class HTTP
 
     /**
      * @param string $path API end point path.
-     * @param string[]|object|null $query Path and Query URI parameters.
+     * @param array<string, string|int|float>|object|null $query Path and Query URI parameters.
      * @return ResponseInterface Guzzle response interface.
      * @throws GuzzleException
      */
@@ -164,8 +164,8 @@ class HTTP
 
     /**
      * @param string $path End point path.
-     * @param string[]|object|null $query Params for path and query URI.
-     * @param string[]|object|null $body Params for PUT body.
+     * @param array<string, string|int|float>|object|null $query Params for path and query URI.
+     * @param array<string, mixed>|object|null $body Params for PUT body.
      * @return ResponseInterface Guzzle response interface.
      * @throws GuzzleException
      */
