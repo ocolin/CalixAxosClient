@@ -41,7 +41,8 @@ class HTTP
      */
     public string $path = '';
 
-/*
+
+/* CONSTRUCTOR
 ----------------------------------------------------------------------------- */
 
     /**
@@ -81,7 +82,7 @@ class HTTP
     }
 
 
-/*
+/* POST METHOD
 ----------------------------------------------------------------------------- */
 
     /**
@@ -110,7 +111,7 @@ class HTTP
 
 
 
-/*
+/* GET METHOD
 ----------------------------------------------------------------------------- */
 
     /**
@@ -134,7 +135,7 @@ class HTTP
 
 
 
-/*
+/* DELETE METHOD
 ----------------------------------------------------------------------------- */
 
     /**
@@ -153,13 +154,12 @@ class HTTP
         $this->format_Path();
         $options = [ 'query' => $query ];
 
-
         return $this->client->delete( uri: $this->path, options: $options );
     }
 
 
 
-/*
+/* PUT METHOD
 ----------------------------------------------------------------------------- */
 
     /**
@@ -184,6 +184,34 @@ class HTTP
         ];
 
         return $this->client->put( uri: $this->path, options: $options );
+    }
+
+
+/* PATCH METHOD
+----------------------------------------------------------------------------- */
+
+    /**
+     * @param string $path End point path.
+     * @param array<string, string|int|float>|object|null $query Params for path and query URI.
+     * @param array<string, mixed>|object|null $body Params for PUT body.
+     * @return ResponseInterface Guzzle response interface.
+     * @throws GuzzleException
+     */
+    public function patch(
+        string $path,
+        array|object|null $query = null,
+        array|object|null $body = null,
+    ) : ResponseInterface
+    {
+        $this->query = $query;
+        $this->path  = $path;
+        $this->format_Path();
+        $options = [
+            'query' => $this->query,
+            'json'  => $body
+        ];
+
+        return $this->client->patch( uri: $this->path, options: $options );
     }
 
 
@@ -245,8 +273,8 @@ class HTTP
 
 
 
-    /*
-    ----------------------------------------------------------------------------- */
+/* ALLOWED HTTP METHODS
+----------------------------------------------------------------------------- */
 
     /**
      * @return string[] List of allowed HTTP methods.
@@ -254,10 +282,11 @@ class HTTP
     public static function allowed_Methods(): array
     {
         return [
-          'GET',
-          'POST',
-          'PUT',
-          'DELETE',
+            'GET',
+            'POST',
+            'PUT',
+            'PATCH',
+            'DELETE',
         ];
     }
 }
